@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:resturantapp/Home/HomeScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:resturantapp/Objects/CustomerOrder.dart';
 import 'package:resturantapp/Objects/Order.dart';
+import 'package:resturantapp/Objects/PastOrder.dart';
 import 'package:resturantapp/Shared/Database.dart';
 
 void main() {
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        StreamProvider<List<Order>>.value(value:Database().ordersFromResturant()),
+        //StreamProvider<List<Order>>.value(value:Database().ordersFromResturant()),
+        StreamProvider<List<Order>>.value(value:Database().ordersFromThisShop()),
+        StreamProvider<List<PastOrder>>.value(value:Database().previousOrders()),
+
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
