@@ -1,24 +1,29 @@
 
 
 class Order{
-  String docId;
-  String title;
+  String user;
+  String orderName;
   int quantity;
   double price;
   List<Order> orders=[];
+  dynamic date;
+  String mealOptions;
 
-  Order({this.title,this.quantity,this.price,this.docId});
+  Order({this.orderName,this.quantity,this.price,this.user,this.date,this.mealOptions});
 
 
 
-  void addOrder(String title, double price,int quantity,docId){
+  void addOrder({String orderName, double price,int quantity,String user,dynamic date,String mealOptions}){
 
     try {
       orders.add(Order(
-          title: title,
+          orderName: orderName,
           quantity: quantity,
           price: price,
-          docId: docId
+          user: user,
+          date: date,
+          mealOptions: mealOptions
+
       ));
     }
     catch(e){

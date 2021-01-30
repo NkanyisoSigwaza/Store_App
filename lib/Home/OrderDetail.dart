@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:resturantapp/Home/HomeScreen.dart';
+import 'package:resturantapp/Navigate/Wrapper.dart';
 import 'package:resturantapp/Objects/Order.dart';
 import 'package:resturantapp/Shared/Constants.dart';
 import 'package:resturantapp/Shared/Database.dart';
+import 'package:resturantapp/States/OrderDetailState.dart';
 import 'package:resturantapp/main.dart';
 
 class OrderDetail extends StatefulWidget {
   Order order;
+  String shop;
 
-  OrderDetail({this.order});
+  OrderDetail({this.order,this.shop});
 
   @override
   _OrderDetailState createState() => _OrderDetailState();
@@ -19,74 +22,150 @@ class _OrderDetailState extends State<OrderDetail> {
   int size;
   final myController = TextEditingController();
 
+  OrderDetailState orderDetailState = OrderDetailState();
+
 
   @override
   Widget build(BuildContext context) {
+    orderDetailState.shop = widget.shop;
     size = widget.order.orders.length;
-    print(size);
+
     try{
       return Scaffold(
-        body: Column(
-          children: [
-            SafeArea(
-              child: Center(
-                child: Text(
-                    widget.order.docId,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    decoration: TextDecoration.underline,
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          //color:Colors.red[100],
+          color: Colors.black,
+          child: SingleChildScrollView(
 
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: SafeArea(
+                    child: Center(
+                      child: Text(
+                          "New Order ;)",
+                        style: TextStyle(
+                          fontSize: 30,
+                          //color: Colors.red[900],
+                          color: Colors.white,
+                          letterSpacing: 3,
+
+
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            ListView.builder(
-                itemCount: size,
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return Card(
-                      child: ListTile(
-                        title: Text(widget.order.orders[index].title),
-                        subtitle: Text("R${widget.order.orders[index].price}"),
+                Container(
+                  height:MediaQuery.of(context).size.height/2,
+                  width: double.infinity,
+                  child: ListView.builder(
 
-                      )
-                  );
-                }),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextFormField(
-                controller: myController,
-                decoration: textInputDecoration.copyWith(hintText: "Order number"),
-                //initialValue: "Order Number",
-              ),
-            ),
-            SizedBox(
-              height:60,
-            ),
-            Center(
-              child: FlatButton(
-                child: Text("Order Registered"),
-                onPressed: ()async{
+                      itemCount: size,
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Container(
 
-                  for(int i=0;i<widget.order.orders.length;i++){
+                            child: Card(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child:Text(
+                                            widget.order.orders[index].orderName,
+                                          style:TextStyle(
+                                            fontSize: MediaQuery.of(context).size.width/16
+                                          )
+                                        ),
+                            ),
+                                      for(String option in widget.order.orders[index].mealOptions.split(","))
+                                        if(widget.order.orders[index].mealOptions.split(",").length>1)
+                                        Padding(
+                                          padding: const EdgeInsets.all(3.0),
+                                          child: Text(
+                                              option ?? '',
+                                            style: TextStyle(
+                                              fontSize: 16
+                                            ),
+                                          ),
+                                        ),
+                                      //Text(),
 
-                    await Database().orderComplete(myController.text,widget.order.orders[i].docId,widget.order.orders[i].title);
-                    //await Database().sendOrderNumber(myController.text, widget.order.docId, widget.order.orders[i].title);
-                  }
-                  Navigator.of(context).pop();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyApp())
-                  );
-                  print("Succesfully Completed");
-                },
-                color: Colors.green,
-              ),
+
+
+
+                                      Text(
+                                            "R${widget.order.orders[index].price.toStringAsFixed(2)}",
+                                            style:TextStyle(
+                                                fontSize: MediaQuery.of(context).size.width/18
+                                            )
+                                        ),
+
+
+
+                                  ],
+                                )
+                            ),
+                          ),
+                        );
+                      }),
+                ),
+                Container(
+                  width: double.maxFinite,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: TextFormField(
+                          controller: myController,
+                          decoration: textInputDecoration.copyWith(hintText: "Order number"),
+
+                        ),
+                      ),
+                      SizedBox(
+                        height:MediaQuery.of(context).size.height/70,
+                      ),
+                      Center(
+                        child: FlatButton(
+                          child: Text("Order Registered"),
+                          onPressed: ()async{
+
+                            for(int i=0;i<widget.order.orders.length;i++){
+                              await orderDetailState.orderCompleteShop(widget.order.user, widget.order.orders[i].date);
+
+                              await orderDetailState.orderComplete(myController.text,widget.order.orders[i].user,widget.order.orders[i].orderName);
+                              //await Database().sendOrderNumber(myController.text, widget.order.docId, widget.order.orders[i].title);
+                            }
+                            Navigator.of(context).pop();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => MyApp())
+                            );
+
+                          },
+                          //color: Colors.purple[200],
+                          color: Colors.white,
+                        ),
+                      ),
+                      // SizedBox(
+                      //   height:MediaQuery.of(context).size.height/50,
+                      // ),
+
+                    ],
+                  ),
+                ),
+
+
+              ],
+
             ),
-          ],
-
+          ),
         ),
       );
     }

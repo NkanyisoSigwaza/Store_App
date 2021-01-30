@@ -39,6 +39,11 @@ dev_dependencies:
   firebase_core: ^0.4.4+3
   firebase_messaging: ^6.0.16
   firebase_analytics: ^5.0.16
+  soundpool: ^0.5.3
+  screen: ^0.0.5
+  hexcolor: ^1.0.6
+  flutter_spinkit: ^4.1.2
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -52,8 +57,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - sounds/
+    - Picture/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
