@@ -1,17 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resturantapp/Home/PreviousOrders.dart';
+import 'package:resturantapp/Objects/PastOrder.dart';
+import 'package:resturantapp/States/PreviousOrdersState.dart';
+import 'package:provider/provider.dart';
 
 class UserDrawer extends StatefulWidget {
+  String shop;
+  UserDrawer(this.shop);
   @override
   _UserDrawerState createState() => _UserDrawerState();
 }
 
 
 class _UserDrawerState extends State<UserDrawer> {
+  PreviousOrdersState previousOrdersState = PreviousOrdersState();
 
   @override
   Widget build(BuildContext context) {
+    previousOrdersState.shop = widget.shop;
     return Container(
       margin: EdgeInsets.only(right:80),
       color:Colors.black,
@@ -23,7 +30,8 @@ class _UserDrawerState extends State<UserDrawer> {
             height:300,
             child: UserAccountsDrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.red,
+                //color: Colors.red,
+                color:Colors.white
               ),
 
 
@@ -32,20 +40,28 @@ class _UserDrawerState extends State<UserDrawer> {
                 child: Text(
                     "Current Orders" ?? "Error Loading Current Orders",
                   style: TextStyle(
-                    fontSize: 25
+                    fontSize: 25,
+                    color: Colors.black
                   ),
                 ),
               ),
               accountEmail: GestureDetector(
                 onTap:(){
                   setState(() {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => PreviousOrders()));
+
+                   Navigator.push(context, MaterialPageRoute(builder: (context){
+
+                     return StreamProvider<List<PastOrder>>.value(
+                       value:previousOrdersState.previousOrders(),
+                         child: PreviousOrders()
+                     );}));
                   });
                 },
                 child: Text(
                 "Past Orders"?? "Error Loading Past Orders",
                   style: TextStyle(
-                      fontSize: 25
+                      fontSize: 25,
+                      color: Colors.black
                   ),
                 ),
               ),
@@ -59,23 +75,7 @@ class _UserDrawerState extends State<UserDrawer> {
             ),
           ),
 
-          ListTile(
-            title:Text(
-              "Sign out",
-              style: TextStyle(
-                  color:Colors.red
-              ),
-            ),
-            onTap: () {
-              //Auth().signOut();
-              Navigator.of(context).pop(); //closes menu in home pAGE
-              //   Navigator.push(
-              //       context,
-              //       MaterialPageRoute(builder: (context) => Wrapper())
-              //   );
-              // },
-            },
-          ),
+
           Divider(
             height:5,
             color:Colors.black,

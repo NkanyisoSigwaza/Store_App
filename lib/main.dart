@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:resturantapp/Home/HomeScreen.dart';
+import 'package:resturantapp/Authentication/Auth.dart';
+import 'package:resturantapp/Navigate/Wrapper.dart';
 import 'package:provider/provider.dart';
-import 'package:resturantapp/Objects/CustomerOrder.dart';
-import 'package:resturantapp/Objects/Order.dart';
-import 'package:resturantapp/Objects/PastOrder.dart';
-import 'package:resturantapp/Shared/Database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 void main() {
   runApp(MyApp());
@@ -16,24 +16,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        //StreamProvider<List<Order>>.value(value:Database().ordersFromResturant()),
-        StreamProvider<List<Order>>.value(value:Database().ordersFromThisShop()),
-        StreamProvider<List<PastOrder>>.value(value:Database().previousOrders()),
-
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          // This makes the visual density adapt to the platform that you run
-          // the app on. For desktop platforms, the controls will be smaller and
-          // closer together (more dense) than on mobile platforms.
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: HomeScreen(),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        // This makes the visual density adapt to the platform that you run
+        // the app on. For desktop platforms, the controls will be smaller and
+        // closer together (more dense) than on mobile platforms.
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: StreamProvider<FirebaseUser>.value(
+        value: Auth().user,
+          child: Wrapper()
       ),
     );
   }

@@ -4,52 +4,53 @@ import 'package:resturantapp/Objects/Order.dart';
 import 'package:resturantapp/Shared/Database.dart';
 import 'package:provider/provider.dart';
 import 'package:resturantapp/Objects/PastOrder.dart';
+import 'package:resturantapp/Shared/Loading.dart';
+import 'package:resturantapp/States/PreviousOrdersState.dart';
 
 class PreviousOrders extends StatefulWidget {
+  String shop;
+  PreviousOrders({this.shop});
   @override
   _PreviousOrdersState createState() => _PreviousOrdersState();
 }
 
 class _PreviousOrdersState extends State<PreviousOrders> {
   
-  // calculates price of all past orders
-  double _totalAmount(List<PastOrder> orders){
-    double answer = 0;
-    for(int i=0;i<orders.length;i++){
-      answer+=orders[i].price;
-    }
-    return answer;
-  }
+
   @override
   Widget build(BuildContext context) {
 
     final pastOrders = Provider.of<List<PastOrder>>(context);
 
 
-    return pastOrders==[] ? Container(
-      child: Text("Empty"),
-    ):Scaffold(
+
+    return pastOrders==null ? Loading(
+
+    ): Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         title:Text(
             "Previous Orders",
           style: TextStyle(
             fontSize: 25,
-            color: Colors.red[200],
+           // color: Colors.red[200],
+            color:Colors.white,
             letterSpacing: 3,
           ),
         )
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
-        color: Colors.red[100],
+        //color: Colors.red[100],
+        color: Colors.black,
         child: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Card(
-                  color: Colors.red[200],
+                 // color: Colors.red[200],
+                  color:Colors.grey,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -65,7 +66,7 @@ class _PreviousOrdersState extends State<PreviousOrders> {
                           height: 20,
                         ),
                         Text(
-                            "Total amount: R${_totalAmount(pastOrders).toStringAsFixed(2)}",
+                            "Total amount: R${PreviousOrdersState().totalAmount(pastOrders).toStringAsFixed(2)}",
                           style: TextStyle(
                               fontSize: 18,
                               letterSpacing: 2

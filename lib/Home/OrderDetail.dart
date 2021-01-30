@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:resturantapp/Home/HomeScreen.dart';
+import 'package:resturantapp/Navigate/Wrapper.dart';
 import 'package:resturantapp/Objects/Order.dart';
 import 'package:resturantapp/Shared/Constants.dart';
 import 'package:resturantapp/Shared/Database.dart';
+import 'package:resturantapp/States/OrderDetailState.dart';
 import 'package:resturantapp/main.dart';
 
 class OrderDetail extends StatefulWidget {
   Order order;
+  String shop;
 
-  OrderDetail({this.order});
+  OrderDetail({this.order,this.shop});
 
   @override
   _OrderDetailState createState() => _OrderDetailState();
@@ -19,16 +22,20 @@ class _OrderDetailState extends State<OrderDetail> {
   int size;
   final myController = TextEditingController();
 
+  OrderDetailState orderDetailState = OrderDetailState();
+
 
   @override
   Widget build(BuildContext context) {
+    orderDetailState.shop = widget.shop;
     size = widget.order.orders.length;
-    print(size);
+
     try{
       return Scaffold(
         body: Container(
           height: MediaQuery.of(context).size.height,
-          color:Colors.red[100],
+          //color:Colors.red[100],
+          color: Colors.black,
           child: SingleChildScrollView(
 
             child: Column(
@@ -41,7 +48,8 @@ class _OrderDetailState extends State<OrderDetail> {
                           "New Order ;)",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.red[900],
+                          //color: Colors.red[900],
+                          color: Colors.white,
                           letterSpacing: 3,
 
 
@@ -75,9 +83,24 @@ class _OrderDetailState extends State<OrderDetail> {
                                           )
                                         ),
                             ),
+                                      for(String option in widget.order.orders[index].mealOptions.split(","))
+                                        if(widget.order.orders[index].mealOptions.split(",").length>1)
+                                        Padding(
+                                          padding: const EdgeInsets.all(3.0),
+                                          child: Text(
+                                              option ?? '',
+                                            style: TextStyle(
+                                              fontSize: 16
+                                            ),
+                                          ),
+                                        ),
+                                      //Text(),
+
+
+
 
                                       Text(
-                                            "R${widget.order.orders[index].price}",
+                                            "R${widget.order.orders[index].price.toStringAsFixed(2)}",
                                             style:TextStyle(
                                                 fontSize: MediaQuery.of(context).size.width/18
                                             )
@@ -114,9 +137,9 @@ class _OrderDetailState extends State<OrderDetail> {
                           onPressed: ()async{
 
                             for(int i=0;i<widget.order.orders.length;i++){
-                              await Database().orderCompleteShop(widget.order.user, widget.order.orders[i].date);
+                              await orderDetailState.orderCompleteShop(widget.order.user, widget.order.orders[i].date);
 
-                              await Database().orderComplete(myController.text,widget.order.orders[i].user,widget.order.orders[i].orderName);
+                              await orderDetailState.orderComplete(myController.text,widget.order.orders[i].user,widget.order.orders[i].orderName);
                               //await Database().sendOrderNumber(myController.text, widget.order.docId, widget.order.orders[i].title);
                             }
                             Navigator.of(context).pop();
@@ -124,9 +147,10 @@ class _OrderDetailState extends State<OrderDetail> {
                                 context,
                                 MaterialPageRoute(builder: (context) => MyApp())
                             );
-                            print("Succesfully Completed");
+
                           },
-                          color: Colors.purple[200],
+                          //color: Colors.purple[200],
+                          color: Colors.white,
                         ),
                       ),
                       // SizedBox(

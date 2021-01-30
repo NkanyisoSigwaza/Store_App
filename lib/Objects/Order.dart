@@ -7,12 +7,13 @@ class Order{
   double price;
   List<Order> orders=[];
   dynamic date;
+  String mealOptions;
 
-  Order({this.orderName,this.quantity,this.price,this.user,this.date});
+  Order({this.orderName,this.quantity,this.price,this.user,this.date,this.mealOptions});
 
 
 
-  void addOrder({String orderName, double price,int quantity,String user,dynamic date}){
+  void addOrder({String orderName, double price,int quantity,String user,dynamic date,String mealOptions}){
 
     try {
       orders.add(Order(
@@ -20,7 +21,9 @@ class Order{
           quantity: quantity,
           price: price,
           user: user,
-          date: date
+          date: date,
+          mealOptions: mealOptions
+
       ));
     }
     catch(e){
