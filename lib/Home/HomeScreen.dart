@@ -38,7 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
     else {
+      HomeScreenState().playAudio("sounds/weDemBoysShort.m4a");
       HomeScreenState().Playsound();
+
 
 
 

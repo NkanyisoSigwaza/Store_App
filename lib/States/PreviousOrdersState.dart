@@ -40,7 +40,8 @@ class PreviousOrdersState with ChangeNotifier{
 
         //place any restrictions here...
         // CHANGE SHOP HERE!
-        if (value["inActive"] ==0 && value["shop"]==shop && value["checkOut"]=="Yes" && value["restaurantSeen"] =="Yes") {
+        print(shop);
+        if (value["active"] ==0 && value["shop"]==shop && value["checkOut"]=="Yes" && value["restaurantSeen"] =="Yes") {
           inActive++;
           n++;
 

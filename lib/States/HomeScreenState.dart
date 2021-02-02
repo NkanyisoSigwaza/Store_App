@@ -1,10 +1,12 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:resturantapp/Authentication/Auth.dart';
 import 'package:resturantapp/Objects/Order.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:soundpool/soundpool.dart';
+import 'dart:js' as js;
 
 class HomeScreenState with ChangeNotifier{
 
@@ -25,6 +27,12 @@ Playsound()async{
   int streamId = await pool.play(soundId);
 }
 
+// sound for web
+void playAudio(String path) {
+  if(kIsWeb) {
+    js.context.callMethod('playAudio', [path]);
+  }
+}
 List<Order>_ordersFromShop(QuerySnapshot snapshot){
   List<Order> orders =[];
   Order order ;
@@ -41,7 +49,7 @@ List<Order>_ordersFromShop(QuerySnapshot snapshot){
       //place any restrictions here...
       // all active orders
 
-      if (value["active"] ==1) {
+      if (value["active"] ==1 && value['shopSeen'] == "No") {
         inActive++;
         n++;
 

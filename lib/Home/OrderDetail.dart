@@ -5,8 +5,10 @@ import 'package:resturantapp/Navigate/Wrapper.dart';
 import 'package:resturantapp/Objects/Order.dart';
 import 'package:resturantapp/Shared/Constants.dart';
 import 'package:resturantapp/Shared/Database.dart';
+import 'package:resturantapp/States/HomeScreenState.dart';
 import 'package:resturantapp/States/OrderDetailState.dart';
 import 'package:resturantapp/main.dart';
+import 'package:provider/provider.dart';
 
 class OrderDetail extends StatefulWidget {
   Order order;
@@ -145,7 +147,10 @@ class _OrderDetailState extends State<OrderDetail> {
                             Navigator.of(context).pop();
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => MyApp())
+                             MaterialPageRoute(builder: (context) => StreamProvider<List<Order>>.value(
+                               value:HomeScreenState().ordersFromThisShop(widget.shop),
+                                 child: HomeScreen())
+                             )
                             );
 
                           },

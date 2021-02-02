@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resturantapp/Authentication/Auth.dart';
 import 'package:resturantapp/Home/PreviousOrders.dart';
 import 'package:resturantapp/Objects/PastOrder.dart';
 import 'package:resturantapp/States/PreviousOrdersState.dart';
@@ -79,6 +80,19 @@ class _UserDrawerState extends State<UserDrawer> {
           Divider(
             height:5,
             color:Colors.black,
+          ),
+          FlatButton(
+              onPressed: ()async{
+                Navigator.pop(context);
+                await Auth().signOut();
+              },
+              child: Text(
+                  "Sign out",
+                style: TextStyle(
+                  color: Colors.red[900],
+                  fontSize: 20
+                ),
+              )
           ),
 
 
