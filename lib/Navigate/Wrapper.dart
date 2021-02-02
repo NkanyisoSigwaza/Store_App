@@ -33,8 +33,6 @@ class _WrapperState extends State<Wrapper> {
     dynamic user = Provider.of<FirebaseUser>(context); // acessing user data from
 
 
-
-
       if (user==null){
         // user not signed in
         return ChangeNotifierProvider.value(

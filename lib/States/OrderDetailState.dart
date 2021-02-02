@@ -24,7 +24,7 @@ class OrderDetailState with ChangeNotifier{
     int index= d.indexOf('.');
     String time = d.substring(0,index);
     Firestore.instance.collection("OrdersShops").document("OrdersShops").collection(shop).document(user).updateData({
-      "$time.active":0,
+      "$time.shopSeen":"Yes",
     },);
   }
 }
