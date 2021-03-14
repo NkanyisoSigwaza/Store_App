@@ -12,7 +12,7 @@ class OrderDetailState with ChangeNotifier{
   // writes to OrdersRefined
   Future orderComplete(String orderNumber,String user,String orderName) async{
     Firestore.instance.collection("OrdersRefined").document(user).updateData({
-      "$orderName.restaurantSeen":"Yes",
+      "$orderName.shopSeen":"Yes",
       "$orderName.orderNumber": orderNumber
     },);
   }
