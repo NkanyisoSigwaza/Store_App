@@ -29,9 +29,9 @@ Playsound()async{
 
 // sound for web
 void playAudio(String path) {
-  if(kIsWeb) {
+  //if(kIsWeb) {
     js.context.callMethod('playAudio', [path]);
-  }
+  //}
 }
 List<Order>_ordersFromShop(QuerySnapshot snapshot){
   List<Order> orders =[];
