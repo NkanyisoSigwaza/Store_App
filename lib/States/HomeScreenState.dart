@@ -29,13 +29,13 @@ Playsound()async{
 
 // sound for web
 void playAudio(String path) {
+
   if(kIsWeb) {
     js.context.callMethod('playAudio', [path]);
-
   }
   // problem
   else{
-    HomeScreenState().Playsound();
+    Playsound();
   }
 
   //}
