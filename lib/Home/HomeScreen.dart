@@ -39,9 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     else {
       HomeScreenState().playAudio("sounds/weDemBoys.mp3");
-      HomeScreenState().Playsound();
-
-
 
 
     return StreamProvider<List<PastOrder>>.value(

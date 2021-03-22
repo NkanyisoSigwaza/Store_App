@@ -32,6 +32,10 @@ void playAudio(String path) {
   if(kIsWeb) {
     js.context.callMethod('playAudio', [path]);
   }
+  // problem
+  else{
+    HomeScreenState().Playsound();
+  }
 }
 List<Order>_ordersFromShop(QuerySnapshot snapshot){
   List<Order> orders =[];
