@@ -22,11 +22,13 @@
   <script type="application/javascript">
       var audio;
       function playAudio(path) {
-        audio= new Howl({
-          src: [path]
+        audio = new Howl({
+          src: [path],
+          autoplay: true
         });
-        audio.play();
         audio.mobileAutoEnable = true;
+        audio.play();
+
       }
     </script>
 </head>
