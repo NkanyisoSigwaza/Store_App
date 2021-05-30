@@ -92,7 +92,7 @@ class _OrderDetailState extends State<OrderDetail> {
                                           child: Text(
                                               option ?? '',
                                             style: TextStyle(
-                                              fontSize: 16
+                                                fontSize: MediaQuery.of(context).size.width/22
                                             ),
                                           ),
                                         ),
@@ -102,11 +102,21 @@ class _OrderDetailState extends State<OrderDetail> {
 
 
                                       Text(
-                                            "R${widget.order.orders[index].price.toStringAsFixed(2)}",
+                                            "R${(widget.order.orders[index].price*widget.order.orders[index].quantity).toStringAsFixed(2)}",
                                             style:TextStyle(
                                                 fontSize: MediaQuery.of(context).size.width/18
                                             )
                                         ),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Text(
+                                        "quantity: ${widget.order.orders[index].quantity}",
+                                        style:TextStyle(
+                                            fontSize: MediaQuery.of(context).size.width/18
+                                        )
+                                    ),
+
 
 
 

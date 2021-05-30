@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Screen.keepOn(true);// keeps screen alive 
+    //Screen.keepOn(true);// keeps screen alive
     final orders = Provider.of<List<Order>>(context);
    // print(orders);
     if (orders == null) {
@@ -39,7 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     else {
       HomeScreenState().playAudio("sounds/weDemBoys.mp3");
-      HomeScreenState().Playsound();
+      print("PLAY AUDIO CALLED");
+      //HomeScreenState().playAudio("weDemBoys.mp3");
+
 
 
 
