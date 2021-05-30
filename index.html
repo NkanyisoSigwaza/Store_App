@@ -18,16 +18,31 @@
   <link rel="manifest" href="manifest.json">
 
   <script src="https://cdn.jsdelivr.net/npm/howler@2.1.3/dist/howler.min.js"></script>
+
 <!--  plays audio for flutter web-->
   <script type="application/javascript">
-      var audio;
+      var audio = null; //check if sound is null, if not stop previous sound and unload it
+
+    sound = new Howl({
+        src: ['assets/sound/voice/' + audio]
+    });
       function playAudio(path) {
+       if (audio != null) {
+        audio.stop();
+        audio.unload();
+        audio = null;
+    }
         audio = new Howl({
           src: [path],
-          autoplay: true
+
+
         });
         audio.mobileAutoEnable = true;
-        audio.play();
+        audio.play()
+
+
+
+
 
       }
     </script>
@@ -67,7 +82,7 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=1955898763');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=2608856518');
       });
     }
   </script>

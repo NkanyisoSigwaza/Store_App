@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "f841116db46bf72a21b3d5afc79e67e2",
+  "assets/AssetManifest.json": "12759073f556668575b03101f2a4f289",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
 "assets/NOTICES": "9f1d94f180fcae8aac64127fd0c811e7",
@@ -14,13 +14,14 @@ const RESOURCES = {
 "assets/sounds/01-macklemore-aint_gonna_die_tonight.mp3": "16a103f75cacb2592775665029c001ad",
 "assets/sounds/weDemBoys.mp3": "e7e6e3766eac954c20b8c1cec8a3c6b5",
 "assets/sounds/weDemBoysShort.m4a": "b65669cc0378221c07063769b64f0000",
+"assets/sounds/Wizkid_-_Essence_Ft_Tems.mp3": "ad0fb86ff40a6f5065b7566ff1c354ab",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index/index.html": "baa2f514a8350d31eb1542e4ad00a782",
-"/": "e1d4d50bd06b7133b2fb34c2b7c6b69b",
-"index.html": "e1d4d50bd06b7133b2fb34c2b7c6b69b",
-"main.dart.js": "e85a30b4b0c8e28a88fe5f77fc1faa7d",
+"index/index.html": "a1a18a3d1f8c27135f4d8a84b58823f7",
+"/": "73b9094a4c7573ea263a7d047cfdde07",
+"index.html": "73b9094a4c7573ea263a7d047cfdde07",
+"main.dart.js": "7975990861c7eebd8e84ebc963f677db",
 "manifest.json": "8bf05e581adf57e5c426f2a2a2a48c9e",
 "version.json": "d3dacfe330edd28e3d2769e20c7c51b8"
 };
