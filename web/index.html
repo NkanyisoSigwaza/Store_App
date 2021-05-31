@@ -22,28 +22,27 @@
 <!--  plays audio for flutter web-->
   <script type="application/javascript">
       var audio = null; //check if sound is null, if not stop previous sound and unload it
+      Howler.autoUnlock = false;
 
-    sound = new Howl({
-        src: ['assets/sound/voice/' + audio]
-    });
-      function playAudio(path) {
-       if (audio != null) {
-        audio.stop();
-        audio.unload();
-        audio = null;
-    }
+      function playAudio(path)
+      {
+         if (audio != null) {
+          audio.stop();
+          audio.unload();
+          audio = null;
+         }
+
         audio = new Howl({
           src: [path],
-
-
+          onplayerror: function() {
+                  audio.once('unlock', function() {
+                      audio.play();
+                  });
+          },
         });
+
         audio.mobileAutoEnable = true;
         audio.play()
-
-
-
-
-
       }
     </script>
 </head>
