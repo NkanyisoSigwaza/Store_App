@@ -23,17 +23,11 @@
   <script type="application/javascript">
        var audio = null; //check if sound is null, if not stop previous sound and unload it
 Howler.autoUnlock = false;
-// Existing code unchanged.
-window.onload = function() {
-  var context = new AudioContext();
-  // Setup all nodes
 
-}
-window.setTimeout(controlSound,5000);
 // One-liner to resume playback when user interacted with the page.
 
 function controlSound(){
-
+var context = new AudioContext();
   context.resume().then(() => {
     console.log('Playback resumed successfully');
      audio.play();
@@ -54,7 +48,9 @@ function playAudio(path)
                 audio.play();
             });
     },
+
   });
+  controlSound();
 
   audio.mobileAutoEnable = true;
   audio.play()
@@ -96,7 +92,7 @@ function playAudio(path)
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=3279490297');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=2350341963');
       });
     }
   </script>
