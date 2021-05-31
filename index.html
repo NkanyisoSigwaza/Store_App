@@ -21,29 +21,44 @@
 
 <!--  plays audio for flutter web-->
   <script type="application/javascript">
-      var audio = null; //check if sound is null, if not stop previous sound and unload it
-      Howler.autoUnlock = false;
+       var audio = null; //check if sound is null, if not stop previous sound and unload it
+Howler.autoUnlock = false;
+// Existing code unchanged.
+window.onload = function() {
+  var context = new AudioContext();
+  // Setup all nodes
 
-      function playAudio(path)
-      {
-         if (audio != null) {
-          audio.stop();
-          audio.unload();
-          audio = null;
-         }
+}
+window.setTimeout(controlSound,5000);
+// One-liner to resume playback when user interacted with the page.
 
-        audio = new Howl({
-          src: [path],
-          onplayerror: function() {
-                  audio.once('unlock', function() {
-                      audio.play();
-                  });
-          },
-        });
+function controlSound(){
 
-        audio.mobileAutoEnable = true;
-        audio.play()
-      }
+  context.resume().then(() => {
+    console.log('Playback resumed successfully');
+     audio.play();
+  });
+}
+function playAudio(path)
+{
+   if (audio != null) {
+    audio.stop();
+    audio.unload();
+    audio = null;
+   }
+
+  audio = new Howl({
+    src: [path],
+    onplayerror: function() {
+            audio.once('unlock', function() {
+                audio.play();
+            });
+    },
+  });
+
+  audio.mobileAutoEnable = true;
+  audio.play()
+}
     </script>
 </head>
 
@@ -81,7 +96,7 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=3722601521');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=3279490297');
       });
     }
   </script>
