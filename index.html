@@ -22,7 +22,7 @@
 <!--  plays audio for flutter web-->
   <script type="application/javascript">
 
-   document.ready(function(){
+   $(function(){
     Howl.detectUserInitialInteraction();
   }
   );
@@ -41,8 +41,8 @@ function playAudio(path)
     src: [path],
 
   });
-  audio.playSafe();
-  audio.fadeSafe(0.0, 0.80, 3000);
+  audio.play();
+
 }
     </script>
 </head>
@@ -81,7 +81,7 @@ function playAudio(path)
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=3059439247');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=2600805994');
       });
     }
   </script>
