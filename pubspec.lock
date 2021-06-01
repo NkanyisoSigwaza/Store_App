@@ -184,6 +184,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.6"
+  howler:
+    dependency: "direct main"
+    description:
+      name: howler
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.2"
   http:
     dependency: transitive
     description:
@@ -198,6 +205,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.16.1"
   js:
     dependency: transitive
     description:
@@ -268,6 +282,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.5"
+  resource_portable:
+    dependency: transitive
+    description:
+      name: resource_portable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.8"
   screen:
     dependency: "direct dev"
     description:
@@ -315,6 +336,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0-nullsafety.3"
+  swiss_knife:
+    dependency: transitive
+    description:
+      name: swiss_knife
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.5.26"
   term_glyph:
     dependency: transitive
     description:
