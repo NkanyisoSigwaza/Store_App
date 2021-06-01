@@ -30,7 +30,7 @@
 
 function playAudio(path)
 {
- Howl.detectUserInitialInteraction();
+
    if (audio != null) {
 
     audio.stop();
@@ -40,6 +40,7 @@ function playAudio(path)
 
   audio = new Howl({
     src: [path],
+    volume = 0
 
   });
   audio.play();
@@ -82,7 +83,7 @@ function playAudio(path)
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=164871400');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=325484305');
       });
     }
   </script>
