@@ -38,17 +38,19 @@ function playAudio(path)
     audio = null;
    }
 
-  audio = new Howl({
+ window.addEventListener('touchstart', function() {
+ audio = new Howl({
     src: [path],
     volume:0.4
 
   });
-
-  window.addEventListener('touchstart', function() {
   audio.resume();
   audio.play();
 });
-  audio.play();
+
+
+
+
 
 }
     </script>
