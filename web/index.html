@@ -43,6 +43,11 @@ function playAudio(path)
     volume:0.4
 
   });
+
+  window.addEventListener('touchstart', function() {
+  audio.resume();
+  audio.play();
+});
   audio.play();
 
 }
