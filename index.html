@@ -21,18 +21,14 @@
 
 <!--  plays audio for flutter web-->
   <script type="application/javascript">
-       var audio = null; //check if sound is null, if not stop previous sound and unload it
-Howler.autoUnlock = false;
 
-// One-liner to resume playback when user interacted with the page.
+   document.ready(function(){
+    Howl.detectUserInitialInteraction();
+  }
+  );
+  var audio = null; //check if sound is null, if not stop previous sound and unload it
 
-function controlSound(){
-var context = new AudioContext();
-  context.resume().then(() => {
-    console.log('Playback resumed successfully');
-     audio.play();
-  });
-}
+
 function playAudio(path)
 {
    if (audio != null) {
@@ -43,17 +39,10 @@ function playAudio(path)
 
   audio = new Howl({
     src: [path],
-    onplayerror: function() {
-            audio.once('unlock', function() {
-                audio.play();
-            });
-    },
 
   });
-  controlSound();
-
-  audio.mobileAutoEnable = true;
-  audio.play()
+  audio.playSafe();
+  audio.fadeSafe(0.0, 0.80, 3000);
 }
     </script>
 </head>
@@ -92,7 +81,7 @@ function playAudio(path)
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=2350341963');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=3059439247');
       });
     }
   </script>
