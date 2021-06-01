@@ -22,16 +22,17 @@
 <!--  plays audio for flutter web-->
   <script type="application/javascript">
 
-   $(function(){
+
     Howl.detectUserInitialInteraction();
-  }
-  );
+
   var audio = null; //check if sound is null, if not stop previous sound and unload it
 
 
 function playAudio(path)
 {
+ Howl.detectUserInitialInteraction();
    if (audio != null) {
+
     audio.stop();
     audio.unload();
     audio = null;
