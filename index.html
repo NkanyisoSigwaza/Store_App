@@ -43,6 +43,11 @@ function playAudio(path)
     volume:0.4
 
   });
+
+  window.addEventListener('touchstart', function() {
+  audio.resume();
+  audio.play();
+});
   audio.play();
 
 }
@@ -83,7 +88,7 @@ function playAudio(path)
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=2122547011');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=1683192187');
       });
     }
   </script>
