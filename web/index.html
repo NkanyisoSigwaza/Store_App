@@ -30,7 +30,7 @@
 
 function playAudio(path)
 {
- Howl.detectUserInitialInteraction();
+
    if (audio != null) {
 
     audio.stop();
@@ -40,6 +40,7 @@ function playAudio(path)
 
   audio = new Howl({
     src: [path],
+    volume = 0
 
   });
   audio.play();
