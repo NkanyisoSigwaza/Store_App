@@ -38,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
     else {
-      HomeScreenState().playAudio("sounds/weDemBoys.mp3");
+      HomeScreenState().playAudio("sounds/weDemBoys.wav");
       print("PLAY AUDIO CALLED");
-      //HomeScreenState().playAudio("weDemBoys.mp3");
+      //HomeScreenState().playAudio("weDemBoys.wav");
 
 
 
