@@ -26,7 +26,7 @@
 
 
   var audio = null; //check if sound is null, if not stop previous sound and unload it
-
+  var audioCtx = new AudioContext();
 
 function playAudio(path)
 {
@@ -39,7 +39,7 @@ function playAudio(path)
    }
 
  window.addEventListener('touchstart', function() {
- var audioCtx = new AudioContext();
+
  audioCtx.resume().then(function(){
   audio = new Howl({
     src: [path],
