@@ -59411,7 +59411,7 @@ ak:function(){return new L.Iv(C.k)}}
 L.Iv.prototype={
 H:function(a,b){var s,r,q,p=null,o=Y.We(b,t.I9)
 if(o==null)return M.bO(p,L.bE("",p,p,p,p,p),C.q,p,p,p,p,p,p,p,p,p,p)
-else{$.a8t().nT("playAudio",["sounds/weDemBoys.mp3"])
+else{$.a8t().nT("playAudio",["sounds/weDemBoys.wav"])
 P.cX("PLAY AUDIO CALLED")
 s=new Y.mg(new P.aU(t.V)).JM()
 r=E.a8J(C.o,!0,L.bE("Orders",p,p,p,p,p))
