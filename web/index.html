@@ -39,7 +39,8 @@ function playAudio(path)
    }
 
  window.addEventListener('touchstart', function() {
- AudiContext().resume().then(function(){
+ var audioCtx = new AudioContext();
+ audioCtx.resume().then(function(){
   audio = new Howl({
     src: [path],
     volume:0.4
