@@ -39,7 +39,8 @@ function playAudio(path)
    }
 
  window.addEventListener('touchstart', function() {
- AudiContext().resume().then(function(){
+ var audioCtx = new AudioContext();
+ audioCtx.resume().then(function(){
   audio = new Howl({
     src: [path],
     volume:0.4
@@ -93,7 +94,7 @@ function playAudio(path)
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=1114279530');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=1486059232');
       });
     }
   </script>
