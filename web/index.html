@@ -31,23 +31,24 @@
 function playAudio(path)
 {
 
-   if (audio != null) {
+
+
+ window.addEventListener('touchstart', function() {
+
+  if (audio != null) {
 
     audio.stop();
     audio.unload();
     audio = null;
    }
 
- window.addEventListener('touchstart', function() {
-
  audioCtx.resume().then(function(){
   audio = new Howl({
     src: [path],
-    volume:0.4
+
 
   });
-
-  audio.play();
+   audio.play();
  });
 
 });
