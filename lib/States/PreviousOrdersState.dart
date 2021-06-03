@@ -56,6 +56,7 @@ class PreviousOrdersState with ChangeNotifier{
                   date:value['date'].toDate()
               )
           );
+          print(" Added past order: $title");
 
 
 
