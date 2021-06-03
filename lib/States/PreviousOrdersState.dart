@@ -40,7 +40,7 @@ class PreviousOrdersState with ChangeNotifier{
 
         //place any restrictions here...
         // CHANGE SHOP HERE!
-
+        print("active: ${value["active"]}, shop: $shop");
         if (value["active"] ==0 && value["shop"]==shop) {
           inActive++;
           n++;
@@ -64,7 +64,7 @@ class PreviousOrdersState with ChangeNotifier{
 
       });
     });
-
+   print(" These are the past orders ${pastOrders}");
     return pastOrders;
   }
 
