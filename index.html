@@ -27,6 +27,7 @@
 
 
   var audioCtx = new AudioContext();
+  var n = 0;
 
 function playAudio(path)
 {
@@ -34,7 +35,13 @@ function playAudio(path)
 
 
  window.addEventListener('touchstart', function() {
-  var audio = null; //check if sound is null, if not stop previous sound and unload it
+    n=1;
+
+});
+
+ var audio = null; //check if sound is null, if not stop previous sound and unload it
+
+  if (n==1){
 
   if (audio != null) {
 
@@ -49,10 +56,10 @@ function playAudio(path)
 
 
   });
-   audio.play();
- });
+    audio.play();
 
-});
+  }
+
 
 
 
@@ -96,7 +103,7 @@ function playAudio(path)
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=2969009610');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=781307502');
       });
     }
   </script>
