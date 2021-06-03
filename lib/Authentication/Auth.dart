@@ -23,7 +23,6 @@ class Auth {
       return await _auth.signOut();
     }
     catch (e) {
-      print("________________________________no SIGN OUT $e");
       return null;
     }
   }

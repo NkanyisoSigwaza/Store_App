@@ -18,30 +18,15 @@ HomeScreenState(){
 }
 
 
-Playsound()async{
-
-  Soundpool pool = Soundpool(streamType: StreamType.music);
-
-  int soundId = await rootBundle.load("sounds/01-macklemore-aint_gonna_die_tonight.mp3").then((ByteData soundData) {
-    return pool.load(soundData);
-  });
-  int streamId = await pool.play(soundId);
-}
-
 // sound for web
 void playAudio(String path) {
-
+  // only works for web platform
   if(kIsWeb) {
 
     js.context.callMethod('playAudio', [path]);
-    //Playsound();
-  }
-  // problem
-  // else{
-  //   Playsound();
-  // }
 
-  //}
+  }
+
 
 }
 List<Order>_ordersFromShop(QuerySnapshot snapshot){
@@ -134,24 +119,12 @@ Stream<List<Order>> ordersFromThisShop(String shop){
 
 }
 
-String _getName(DocumentSnapshot snapshot){
-  print("Hey");
-  print(snapshot.data);
-  return null;
-
-
-}
-
 Future<String>getShopName()async{
-  print("Here");
   DocumentSnapshot doc;
   String shop;
   dynamic uid = await Auth().inputData();
-  print("There");
   doc= await  Firestore.instance.collection('Shops').document(uid).get();
   shop = doc.data['shop'];
-
-  print("shop is :$shop");
   return shop;
 }
 

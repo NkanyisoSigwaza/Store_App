@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
-import 'package:firebase/firebase.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignInState with ChangeNotifier {
@@ -81,7 +79,7 @@ class SignInState with ChangeNotifier {
       return null;
     }
     catch (e) {
-      print(e);
+
       switch (e.code) {
         case "ERROR_EMAIL_ALREADY_IN_USE":
           error = "Email already registered, sign in.";
@@ -110,7 +108,7 @@ class SignInState with ChangeNotifier {
           break;
 
         default:
-          error = "An undefined Error happened.";
+          error = "An undefined Error happened. Please try again";
       }
       notifyListeners();
       return null;

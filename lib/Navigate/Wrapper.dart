@@ -44,7 +44,7 @@ class _WrapperState extends State<Wrapper> {
         if(n ==0){
           HomeScreenState().getShopName().then((value){
             setState(() {
-              print("value: $value");
+
               shop = value;
             });
           });
@@ -52,7 +52,7 @@ class _WrapperState extends State<Wrapper> {
         }
 
 
-        print('shop is : $shop');
+
         // Bastard signed in!
         if(shop !=null){
           setState(() {
@@ -66,7 +66,7 @@ class _WrapperState extends State<Wrapper> {
             child: HomeScreen(shop: shop,)
         );}
         else{
-          print("Said null : $shop");
+
           return Loading();
         }
       }

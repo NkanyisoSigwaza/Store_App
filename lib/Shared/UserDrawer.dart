@@ -66,13 +66,7 @@ class _UserDrawerState extends State<UserDrawer> {
                   ),
                 ),
               ),
-              // currentAccountPicture:CircleAvatar(
-              //   radius:50,
-              //   backgroundImage:AssetImage("Picture/avatar.png") ,
-              //   backgroundColor: Colors.grey[400],
-              //
-              //
-              // ),
+
             ),
           ),
 
