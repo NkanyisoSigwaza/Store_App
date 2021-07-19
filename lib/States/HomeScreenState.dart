@@ -21,7 +21,9 @@ HomeScreenState(){
 // sound for web
 void playAudio(String path) {
   // only works for web platform
+  print("method called");
   if(kIsWeb) {
+    print("Kis web");
 
     js.context.callMethod('playAudio', [path]);
 
