@@ -31,6 +31,7 @@ print("Audio function");
 
 function playAudio(path)
 {
+window.print("HI");
 print("In play function");
 
 
@@ -43,6 +44,7 @@ print("In play function");
 
  var audio = null; //check if sound is null, if not stop previous sound and unload it
 
+
   if (n==1){
 
 
@@ -52,7 +54,7 @@ print("In play function");
         audio.unload();
         audio = null;
        }
-       var audioCtx = new AudioContext();
+
        audioCtx.resume().then(function(){
         audio = new Howl({
           src: [path],
@@ -101,7 +103,7 @@ print("In play function");
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=3968820299');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=980546989');
       });
     }
   </script>
