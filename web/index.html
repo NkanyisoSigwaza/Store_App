@@ -31,17 +31,20 @@
 
 function playAudio(path)
 {
+print("In play function");
 
 
 
  window.addEventListener('touchstart', function() {
     n=1;
+    print("Registered touch");
 
 });
 
  var audio = null; //check if sound is null, if not stop previous sound and unload it
-
+print("This value should be 1: value="+n);
   if (n==1){
+  print(audio);
 
       if (audio != null) {
 

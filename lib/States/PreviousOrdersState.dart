@@ -32,44 +32,45 @@ class PreviousOrdersState with ChangeNotifier{
     int quantity;
     double price;
     //doc == each user
-    snapshot.documents.forEach((doc) {
-      int n=0;
-      int inActive=0;
-      // value == actual order
-      doc.data.values.forEach((value) {
+    try {
+      snapshot.documents.forEach((doc) {
+        int n = 0;
+        int inActive = 0;
+        // value == actual order
+        doc.data.values.forEach((value) {
+          //place any restrictions here...
+          // CHANGE SHOP HERE!
+          print("active: ${value["active"]}, shop: $shop");
+          if (value["active"] == 0 && value["shop"] == shop) {
+            inActive++;
+            n++;
 
-        //place any restrictions here...
-        // CHANGE SHOP HERE!
-        print("active: ${value["active"]}, shop: $shop");
-        if (value["active"] ==0 && value["shop"]==shop) {
-          inActive++;
-          n++;
-
-          title = value["title"];
-          price = value["price"];
-          quantity = value["quantity"];
-          pastOrders.add(
-              PastOrder(
-                  orderName: title,
-                  price:price,
-                  quantity: quantity,
-                  date:value['date'].toDate()
-              )
-          );
-          print(" Added past order: $title");
-
-
-
-        }
-
-
+            title = value["title"];
+            price = value["price"];
+            quantity = value["quantity"];
+            pastOrders.add(
+                PastOrder(
+                    orderName: title,
+                    price: price,
+                    quantity: quantity,
+                    date: value['date'].toDate()
+                )
+            );
+            print(" Added past order: $title");
+          }
+        });
       });
-    });
+    }
+    catch(e){
+      print(e);
+    }
+
    print(" These are the past orders ${pastOrders}");
     return pastOrders;
   }
 
   Stream<List<PastOrder>> previousOrders(){
+    print("Entered stream");
     return Firestore.instance.collection("OrdersRefined").snapshots().map(_pastOrders);
 
   }

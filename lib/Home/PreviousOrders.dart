@@ -21,7 +21,7 @@ class _PreviousOrdersState extends State<PreviousOrders> {
   Widget build(BuildContext context) {
 
     final pastOrders = Provider.of<List<PastOrder>>(context);
-
+    print(pastOrders);
 
 
     return pastOrders==null ? Loading(
