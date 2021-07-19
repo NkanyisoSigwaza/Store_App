@@ -25,7 +25,7 @@
 
 
 
-print("Audio function");
+console.log("Audio function");
 
   var n = 0;
   var audioCtx = new AudioContext();
@@ -33,13 +33,13 @@ print("Audio function");
 function playAudio(path)
 {
 console.log("HI");
-print("In play function");
+console.log("In play function");
 
 
 
  window.addEventListener('touchstart', function() {
     n=1;
-    print("Registered touch");
+    console.log("Registered touch");
 
 });
 
@@ -104,7 +104,7 @@ print("In play function");
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=3143022516');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=4034299845');
       });
     }
   </script>
