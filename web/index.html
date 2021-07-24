@@ -41,10 +41,16 @@ console.log("In play function");
  document.addEventListener("touchstart", function() {
     n=1;
     console.log("Registered touch");
+    var audio = null; //check if sound is null, if not stop previous sound and unload it
+    audioCtx.resume().then(function(){
+        audio = new Howl({
+          src: [path],
 
+
+        });
 });
 
- var audio = null; //check if sound is null, if not stop previous sound and unload it
+
 
 
   if (n==1){
