@@ -48,31 +48,10 @@ console.log("In play function");
 
 
         });
+        audio.play();
 });
+audio.play();
 
-
-
-
-  if (n==1){
-
-
-      if (audio != null) {
-
-        audio.stop();
-        audio.unload();
-        audio = null;
-       }
-
-       audioCtx.resume().then(function(){
-        audio = new Howl({
-          src: [path],
-
-
-        });
-    	 audio.play();
-       });
-
-  }
 }
     </script>
 </head>
