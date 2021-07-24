@@ -28,12 +28,13 @@
 console.log("Audio function");
 
   var n = 0;
+  var audioCtx = new AudioContext();
 
 
 function playAudio(path)
 {
 console.log("HI");
-var audioCtx = new AudioContext();
+
 console.log("In play function");
 
 
@@ -42,17 +43,31 @@ console.log("In play function");
     n=1;
     console.log("Registered touch");
     var audio = null; //check if sound is null, if not stop previous sound and unload it
-    audioCtx.resume().then(function(){
+
+});
+
+
+
+  if (n==1){
+
+
+      if (audio != null) {
+
+        audio.stop();
+        audio.unload();
+        audio = null;
+       }
+
+       audioCtx.resume().then(function(){
         audio = new Howl({
           src: [path],
 
 
         });
-        audio.play();
-});
-});
+    	 audio.play();
+       });
 
-
+  }
 }
     </script>
 </head>
@@ -91,7 +106,7 @@ console.log("In play function");
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=3674702341');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=956214626');
       });
     }
   </script>
