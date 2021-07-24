@@ -28,11 +28,12 @@
 console.log("Audio function");
 
   var n = 0;
-  var audioCtx = new AudioContext();
+
 
 function playAudio(path)
 {
 console.log("HI");
+var audioCtx = new AudioContext();
 console.log("In play function");
 
 
@@ -104,7 +105,7 @@ console.log("In play function");
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=1298950717');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=3356189762');
       });
     }
   </script>
