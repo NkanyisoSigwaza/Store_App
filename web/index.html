@@ -27,25 +27,27 @@
 
 console.log("Audio function");
 
-  var n;
+  var n=0;
   var audioCtx = new AudioContext();
+
+   document.addEventListener("touchstart", function() {
+    n=1;
+    console.log("Registered touch");
+    var audio = null; //check if sound is null, if not stop previous sound and unload it
+
+});
 
 
 function playAudio(path)
 {
-n=0;
+
 console.log("HI");
 
 console.log("In play function");
 
 
 
- document.addEventListener("touchstart", function() {
-    n=1;
-    console.log("Registered touch");
-    var audio = null; //check if sound is null, if not stop previous sound and unload it
 
-});
 console.log("n was set to");
 console.log(n);
 
