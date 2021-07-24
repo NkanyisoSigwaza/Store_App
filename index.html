@@ -48,31 +48,10 @@ console.log("In play function");
 
 
         });
+        audio.play();
 });
+audio.play();
 
-
-
-
-  if (n==1){
-
-
-      if (audio != null) {
-
-        audio.stop();
-        audio.unload();
-        audio = null;
-       }
-
-       audioCtx.resume().then(function(){
-        audio = new Howl({
-          src: [path],
-
-
-        });
-    	 audio.play();
-       });
-
-  }
 }
     </script>
 </head>
@@ -111,7 +90,7 @@ console.log("In play function");
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=877743318');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=1196238908');
       });
     }
   </script>
