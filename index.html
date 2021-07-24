@@ -49,7 +49,7 @@ console.log("In play function");
 
 
   if (n==1){
-
+   console.log("n was set to 1");
 
       if (audio != null) {
 
@@ -59,6 +59,7 @@ console.log("In play function");
        }
 
        audioCtx.resume().then(function(){
+       console.log("Audio context resumed");
         audio = new Howl({
           src: [path],
 
@@ -106,7 +107,7 @@ console.log("In play function");
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=956214626');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=3408719785');
       });
     }
   </script>
