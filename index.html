@@ -29,11 +29,11 @@ console.log("Audio function");
 
   var n=0;
   var audioCtx = new AudioContext();
+  var audio = null; //check if sound is null, if not stop previous sound and unload it
 
    document.addEventListener("touchstart", function() {
     n=1;
     console.log("Registered touch");
-    var audio = null; //check if sound is null, if not stop previous sound and unload it
 
 });
 
@@ -112,7 +112,7 @@ console.log(n);
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=838551779');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=4185999622');
       });
     }
   </script>
