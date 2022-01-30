@@ -37,6 +37,11 @@ console.log("Audio function");
 
 });
 
+   document.addEventListener("click", function() {
+    n=1;
+    console.log("Registered click");
+
+});
 
 function playAudio(path)
 {
@@ -101,7 +106,7 @@ function playAudio(path)
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=4109030640');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=860765084');
       });
     }
   </script>

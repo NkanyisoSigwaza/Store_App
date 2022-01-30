@@ -5,8 +5,8 @@ const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "assets/AssetManifest.json": "ea00bc653e88dc00e6818bcff5f89b32",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"assets/NOTICES": "b3e6e4753bbae87b98c54a014e71a100",
+"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
+"assets/NOTICES": "2e0f95ee4da05dabb8c36d7c98a90d13",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
 "assets/Picture/HalaLogo.jpeg": "9b8a0d3800a961332f3e23a92e7406e9",
 "assets/Picture/HalaTransparent.jpeg": "ff7269138eb571a6057fbe29fac70687",
@@ -15,15 +15,19 @@ const RESOURCES = {
 "assets/sounds/weDemBoys.wav": "e7e6e3766eac954c20b8c1cec8a3c6b5",
 "assets/sounds/weDemBoysShort.m4a": "b65669cc0378221c07063769b64f0000",
 "assets/sounds/Wizkid_-_Essence_Ft_Tems.mp3": "ad0fb86ff40a6f5065b7566ff1c354ab",
+"canvaskit/canvaskit.js": "43fa9e17039a625450b6aba93baf521e",
+"canvaskit/canvaskit.wasm": "04ed3c745ff1dee16504be01f9623498",
+"canvaskit/profiling/canvaskit.js": "f3bfccc993a1e0bfdd3440af60d99df4",
+"canvaskit/profiling/canvaskit.wasm": "a9610cf39260f60fbe7524a785c66101",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index/index.html": "0268f99e05bdce7d368c7ef4946e2227",
-"/": "4c9e38352bb980721b0aeb85d134b6f5",
-"index.html": "4c9e38352bb980721b0aeb85d134b6f5",
-"main.dart.js": "86c2076339429fbf1a2120cd58d50917",
+"index/index.html": "adf541e5da7af27c81d5c45c1e6e3c1d",
+"/": "0a3f73f935a4831386dec1d1f22b758f",
+"index.html": "0a3f73f935a4831386dec1d1f22b758f",
+"main.dart.js": "d7cc588a46e835709e0d00212d2761ff",
 "manifest.json": "8bf05e581adf57e5c426f2a2a2a48c9e",
-"version.json": "d3dacfe330edd28e3d2769e20c7c51b8"
+"version.json": "1edd15c1eb61c9be0a510f07cf206d33"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -41,7 +45,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
@@ -167,7 +171,7 @@ async function downloadOffline() {
     }
     currentContent[key] = true;
   }
-  for (var resourceKey in Object.keys(RESOURCES)) {
+  for (var resourceKey of Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
       resources.push(resourceKey);
     }
